@@ -1,0 +1,10 @@
+.profile__add-photo{
+    width: 146px;
+    height: 46px;
+    border: 2px solid #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3px;
+}

@@ -1,0 +1,10 @@
+.author__edit {
+    width: 22px;
+    height: 22px;
+    border: 1px solid #fff;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 37px;
+}

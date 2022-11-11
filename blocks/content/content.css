@@ -1,0 +1,9 @@
+.content {
+    max-width: 880px;
+    width: 100%;
+    padding-top: 39px;
+    gap: 51px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}

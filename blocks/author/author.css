@@ -1,0 +1,6 @@
+.author {
+    display: flex;
+    flex-direction: row;
+    max-width: 486px;
+    width: 100%;
+}
