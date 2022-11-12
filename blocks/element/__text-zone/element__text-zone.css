@@ -1,9 +1,9 @@
-.element__text-zone{
+.element__text-zone {
     display: flex;
     flex-direction: row;
     max-width: 240px;
     width: 100%;
     justify-content: space-between;
     padding-left: 21px;
-    
+
 }

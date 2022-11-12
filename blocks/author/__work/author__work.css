@@ -5,3 +5,10 @@
     line-height: 22px;
     font-weight: 400;
 }
+
+@media screen and (max-width:620px) {
+    .author__work {
+        font-size: 14px;
+        line-height: 17px;
+    }
+}

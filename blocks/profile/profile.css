@@ -6,9 +6,11 @@
     align-items: center;
     justify-content: space-between;
 }
-@media screen and (max-width:930px){
-    .profile{
+
+@media screen and (max-width:930px) {
+    .profile {
         max-width: 581px;
         flex-direction: column;
+        gap: 34px;
     }
 }

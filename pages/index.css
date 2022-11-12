@@ -13,6 +13,7 @@
 
 @import url('../blocks/author/__avatar/author__avatar.css');
 @import url('../blocks/author/__Info-zone/author__info-zone.css');
+@import url('../blocks/author/__title__zone/author__title-zone.css');
 @import url('../blocks/author/__name/author__name.css');
 @import url('../blocks/author/__work/author__work.css');
 @import url('../blocks/author/__edit/author__edit.css');

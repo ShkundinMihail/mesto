@@ -13,3 +13,11 @@
         max-width: 581px;
     }
 }
+
+@media screen and (max-width:620px) {
+    .content {
+        max-width: 282px;
+        padding-top: 42px;
+        gap: 33px;
+    }
+}
