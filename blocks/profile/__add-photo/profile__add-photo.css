@@ -1,4 +1,4 @@
-.profile__add-photo{
+.profile__add-photo {
     width: 146px;
     height: 46px;
     border: 2px solid #fff;
@@ -7,4 +7,10 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 3px;
+}
+
+@media screen and (max-width:930px) {
+    .profile__add-photo {
+        width: 282px;
+    }
 }

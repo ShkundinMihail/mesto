@@ -2,8 +2,14 @@
     max-width: 880px;
     width: 100%;
     padding-top: 39px;
-    gap: 51px;
+    gap: 46px;
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+
+@media screen and (max-width:930px) {
+    .content {
+        max-width: 581px;
+    }
 }
