@@ -9,6 +9,11 @@
     margin-bottom: 3px;
 }
 
+.profile__add-photo:hover {
+    opacity: .6;
+    cursor: pointer;
+}
+
 @media screen and (max-width:930px) {
     .profile__add-photo {
         width: 280px;

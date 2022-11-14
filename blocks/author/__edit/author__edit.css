@@ -1,13 +1,20 @@
 .author__edit {
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    padding: 0;
     border: 1px solid #fff;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    margin-top: 7px;
-    margin-left: 20px;
+    margin-top: 6px;
+    margin-left: 21px;
+    cursor: pointer;
+}
+
+.author__edit:hover {
+    opacity: .6;
 }
 
 @media screen and (max-width:620px) {

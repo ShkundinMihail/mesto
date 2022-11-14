@@ -4,6 +4,10 @@
     font-size: 42px;
     line-height: 48px;
     font-weight: 500;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 300px;
 
 
 }
@@ -12,5 +16,6 @@
     .author__name {
         font-size: 27px;
         line-height: 34px;
+        max-width: 189px;
     }
 }

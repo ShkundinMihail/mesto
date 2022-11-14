@@ -4,6 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="images/icon-head.png">
         <link rel="stylesheet" href="./pages/index.css">
         <title>Место Россия</title>
     </head>
@@ -20,11 +21,12 @@
                     <div class="author__info-zone">
                         <div class="author__title-zone">
                             <h1 class="author__name">Жак&#8209;Ив&nbsp;Кусто</h1>
-                            <div
+                            <button
                                 class="author__edit"><img
                                     class="author__edit-icon"
                                     src="images/edit__icon.svg" alt="изменить">
-                            </div></div>
+                            </button>
+                        </div>
                         <p class="author__work">Исследователь&nbsp;океана</p>
                     </div>
 
@@ -40,8 +42,9 @@
                         alt="карачевск">
                     <div class="element__text-zone">
                         <h2 class="element__title">Карачаевск</h2>
-                        <img class="element__like" src="images/like__icon.svg"
-                            alt="лайк">
+                        <button class="element__like"><img
+                                src="images/like__icon.svg"
+                                alt="лайк"></button>
                     </div>
                 </div>
                 <div class="element">
@@ -50,8 +53,9 @@
                         alt="гора эльбрус">
                     <div class="element__text-zone">
                         <h2 class="element__title">Гора&nbsp;Эльбрус</h2>
-                        <img class="element__like" src="images/like__icon.svg"
-                            alt="лайк">
+                        <button class="element__like"><img
+                                src="images/like__icon.svg"
+                                alt="лайк"></button>
                     </div>
                 </div>
                 <div class="element">
@@ -60,8 +64,9 @@
                         alt="домбай">
                     <div class="element__text-zone">
                         <h2 class="element__title">Домбай</h2>
-                        <img class="element__like" src="images/like__icon.svg"
-                            alt="лайк">
+                        <button class="element__like"><img
+                                src="images/like__icon.svg"
+                                alt="лайк"></button>
                     </div>
                 </div>
                 <div class="element">
@@ -70,8 +75,9 @@
                         alt="гора эльбрус">
                     <div class="element__text-zone">
                         <h2 class="element__title">Гора&nbsp;Эльбрус</h2>
-                        <img class="element__like" src="images/like__icon.svg"
-                            alt="лайк">
+                        <button class="element__like"><img
+                                src="images/like__icon.svg"
+                                alt="лайк"></button>
                     </div>
                 </div>
                 <div class="element">
@@ -80,8 +86,9 @@
                         alt="домбай">
                     <div class="element__text-zone">
                         <h2 class="element__title">Домбай</h2>
-                        <img class="element__like" src="images/like__icon.svg"
-                            alt="лайк">
+                        <button class="element__like"><img
+                                src="images/like__icon.svg"
+                                alt="лайк"></button>
                     </div>
                 </div>
                 <div class="element">
@@ -90,8 +97,9 @@
                         alt="карачевск">
                     <div class="element__text-zone">
                         <h2 class="element__title">Карачаево-Черкесия</h2>
-                        <img class="element__like" src="images/like__icon.svg"
-                            alt="лайк">
+                        <button class="element__like"><img
+                                src="images/like__icon.svg"
+                                alt="лайк"></button>
                     </div>
                 </div>
 
@@ -100,6 +108,24 @@
         <footer class="footer">
             <p class="footer__copyright">&#169;&nbsp;2020&nbsp;Mesto&nbsp;Russia</p>
         </footer>
+        <div class="popup">
+            <button class="popup__close"><img class="popup__close-icon"
+                    src="images/Close-Icon.svg"
+                    alt="X"></button>
+            <form class="popup__content" method="post" name="infoUser">
+                <h3 class="popup__title">Редактировать профиль</h3>
+                <input class="popup__name popup__input-style" value=""
+                    maxlength="40"
+                    name="name"
+                    placeholder="Имя" type="text">
+                <input class="popup__work popup__input-style" value=""
+                    maxlength="40"
+                    name="work"
+                    placeholder="О себе" type="text">
+                <button class="popup__save" type="submit">Сохранить</button>
+            </form>
+        </div>
+        <script src="scripts/index.js"></script>
     </body>
 
 </html>

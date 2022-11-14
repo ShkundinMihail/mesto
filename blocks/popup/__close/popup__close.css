@@ -1,0 +1,18 @@
+.popup__close {
+    margin-left: 475px;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.popup__close:hover {
+    opacity: .6;
+}
+
+@media screen and (max-width: 620px) {
+    .popup__close {
+        margin-left: 262px;
+    }
+}

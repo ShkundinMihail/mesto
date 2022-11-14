@@ -1,7 +1,7 @@
 .element__text-zone {
     display: flex;
     flex-direction: row;
-    max-width: 240px;
+    max-width: 241px;
     width: 100%;
     justify-content: space-between;
     padding-left: 21px;
