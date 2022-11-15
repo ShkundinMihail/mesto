@@ -1,10 +1,13 @@
 .popup__close {
-    margin-left: 475px;
+    top: 0;
+    right: 0;
     padding: 0;
+    margin: -40px -40px 0 0;
     border: none;
     background-color: transparent;
     cursor: pointer;
     box-sizing: border-box;
+    position: absolute;
 }
 
 .popup__close:hover {
@@ -13,6 +16,6 @@
 
 @media screen and (max-width: 620px) {
     .popup__close {
-        margin-left: 262px;
+margin: -36px -1px 0 0  ;
     }
 }
