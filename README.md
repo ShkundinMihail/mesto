@@ -10,10 +10,6 @@
 * Реализовать возможность изменения аватара автора. 
 
 
-
-
-
-
-
 [Cсылка на  сайт в GitHub Pages](https://shkundinmihail.github.io/mesto__russia/)
+
 https://shkundinmihail.github.io/mesto/
