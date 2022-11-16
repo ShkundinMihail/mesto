@@ -21,7 +21,7 @@
                     <div class="author__info-zone">
                         <div class="author__title-zone">
                             <h1 class="author__name">Жак&#8209;Ив&nbsp;Кусто</h1>
-                            <button
+                            <button type="button" name="edit-author"
                                 class="author__edit"><img
                                     class="author__edit-icon"
                                     src="images/edit-icon.svg" alt="изменить">
@@ -31,9 +31,10 @@
                     </div>
 
                 </div>
-                <div class="profile__add-photo"><img
+                <button class="profile__add-photo" type="button"
+                    name="add-photo"><img
                         class="profile__add-photo-icon"
-                        src="images/addPhoto-icon.svg" alt="добавить фото"></div>
+                        src="images/addPhoto-icon.svg" alt="добавить фото"></button>
             </section>
             <section class="elements">
                 <article class="element">
@@ -42,7 +43,7 @@
                         alt="Егор Летов фото">
                     <div class="element__text-zone">
                         <h2 class="element__title">Егор Летов</h2>
-                        <button class="element__like"><img
+                        <button class="element__like" type="button" name="like"><img
                                 src="images/like-icon.svg"
                                 alt="лайк"></button>
                     </div>
@@ -53,7 +54,7 @@
                         alt="Южный парк фото">
                     <div class="element__text-zone">
                         <h2 class="element__title">Южный парк</h2>
-                        <button class="element__like"><img
+                        <button class="element__like" type="button" name="like"><img
                                 src="images/like-icon.svg"
                                 alt="лайк"></button>
                     </div>
@@ -64,7 +65,7 @@
                         alt=">Юрий Клинских фото">
                     <div class="element__text-zone">
                         <h2 class="element__title">Юра Хой</h2>
-                        <button class="element__like"><img
+                        <button class="element__like" type="button" name="like"><img
                                 src="images/like-icon.svg"
                                 alt="лайк"></button>
                     </div>
@@ -75,7 +76,7 @@
                         alt="Мистер Пиклс фото">
                     <div class="element__text-zone">
                         <h2 class="element__title">Мистер Пиклс</h2>
-                        <button class="element__like"><img
+                        <button class="element__like" type="button" name="like"><img
                                 src="images/like-icon.svg"
                                 alt="лайк"></button>
                     </div>
@@ -86,7 +87,7 @@
                         alt="Михаил Горшенёв фото">
                     <div class="element__text-zone">
                         <h2 class="element__title">Михаил Горшенёв</h2>
-                        <button class="element__like"><img
+                        <button class="element__like" type="button" name="like"><img
                                 src="images/like-icon.svg"
                                 alt="лайк"></button>
                     </div>
@@ -97,7 +98,7 @@
                         alt="Метал Апокалипсис постер">
                     <div class="element__text-zone">
                         <h2 class="element__title">Метал Апокалипсис</h2>
-                        <button class="element__like"><img
+                        <button class="element__like" type="button" name="like"><img
                                 src="images/like-icon.svg"
                                 alt="лайк"></button>
                     </div>
@@ -111,18 +112,22 @@
         <div class="popup">
             <div class="popup__content">
                 <button class="popup__close"><img class="popup__close-icon"
-                    src="images/Close-Icon.svg"
-                    alt="Х"></button>
-                    <h3 class="popup__title">Редактировать профиль</h3>
-                    <form class="popup__author-edit" method="post" name="infoAuthor">
-                        <input class="popup__input-style popup__input-style_edit_name" 
-                            name="name"
-                            placeholder="Имя" type="text" value="">
-                        <input class="popup__input-style popup__input-style_edit_work" 
-                            name="work"
-                            placeholder="О себе" type="text" value=""> 
-                        <input type="submit" class="popup__save" value="Сохранить">
-                    </form>
+                        src="images/Close-Icon.svg"
+                        alt="Х"></button>
+                <h3 class="popup__title">Редактировать профиль</h3>
+                <form class="popup__author-edit" method="post"
+                    name="infoAuthor">
+                    <input class="popup__input-style
+                        popup__input-style_edit_name"
+                        name="name"
+                        placeholder="Имя" type="text" value="">
+                    <input class="popup__input-style
+                        popup__input-style_edit_work"
+                        name="work"
+                        placeholder="О себе" type="text" value="">
+                    <button type="submit" class="popup__save"
+                        name="submit-form">Сохранить</button>
+                </form>
             </div>
 
         </div>
