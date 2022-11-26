@@ -1,3 +1,5 @@
+import initialCards from './data.js';
+
 const author = document.querySelector('.author');
 const nameAuthor = document.querySelector('.author__name');
 const workAuthor = document.querySelector('.author__work');
@@ -41,3 +43,4 @@ popupForm.addEventListener('submit', savePopupInformation);
 popupOpenButtonElement.addEventListener('click', openPopup);
 popupCloseButtonElement.addEventListener('click', closePopup);
 popupElement.addEventListener('click', closePopupByClickOnOverlay);
+
