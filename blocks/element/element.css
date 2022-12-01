@@ -1,4 +1,4 @@
-.element{
+.element {
     max-width: 282px;
     min-height: 361px;
     background-color: #fff;
@@ -7,4 +7,5 @@
     gap: 25px;
     border-radius: 11px;
     overflow: hidden;
+    position: relative;
 }

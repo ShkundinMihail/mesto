@@ -6,6 +6,19 @@
     flex-direction: column;
     align-items: center;
     position: relative;
+    animation: animate-rotate 0.3s linear;
+}
+
+@keyframes animate-rotate {
+    from {
+        transform: rotateY(-360deg);
+        scale:0;
+    }
+
+    to {
+        transform: rotateY(0deg);
+        scale:1;
+    }
 }
 
 @media screen and (max-width: 620px) {

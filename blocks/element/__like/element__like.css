@@ -1,20 +1,13 @@
 .element__like {
-    background-position: center;
-    background-repeat: no-repeat;
+    background: url('../../../images/like-icon.svg') center no-repeat transparent;
     width: 22px;
     padding: 0;
     cursor: pointer;
-    object-position: center;
     padding-top: 3px;
-    background-color: transparent;
     border: none;
 }
 
 .element__like:hover {
     opacity: .5;
     cursor: pointer;
-}
-
-.element__like:focus {
-    background-image: url('../../../images/like-icon-active.svg');
 }

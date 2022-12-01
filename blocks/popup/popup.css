@@ -5,8 +5,18 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: rgba(0, 0, 0, 0.5);
     position: fixed;
+    animation: animate-dark 0.3s linear both;
+}
+
+@keyframes animate-dark {
+    form {
+        background-color: transparent;
+    }
+
+    to {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
 }
 
 @media screen and (max-width: 620px) {
