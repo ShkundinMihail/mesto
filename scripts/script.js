@@ -1,4 +1,4 @@
-import initialCards from './cards.js';
+import initialCards from './cards.js'; 
 
 const nameAuthor = document.querySelector('.author__name');
 const workAuthor = document.querySelector('.author__work');
