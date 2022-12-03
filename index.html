@@ -73,16 +73,17 @@
                         src="images/Close-Icon.svg"
                         alt="Х"></button>
                 <h3 class="popup__title">Новое место</h3>
-                <form class="popup__author-edit" id="popupPhotoForm" method="post"
+                <form class="popup__author-edit" id="popupPhotoForm"
+                    method="post"
                     name="infoAuthor">
                     <input class="popup__input-style
                         popup__input-style_edit_name"
-                        id="titlePhoto"
-                        placeholder="Название" type="text" value="">
+                        id="titlePhoto" required
+                        placeholder="Название" type="text">
                     <input class="popup__input-style
                         popup__input-style_edit_work"
-                        id="linkPhoto"
-                        placeholder="Ссылка на картинку" type="text" value="">
+                        id="linkPhoto" required 
+                        placeholder="Ссылка на картинку" type="url">
                     <button type="submit" class="popup__save" id="savePhoto"
                         name="submit-form">Создать</button>
                 </form>
@@ -106,8 +107,9 @@
             <article class="element" lang="en ru">
                 <img class="element__photo" id="photo"
                     src="#"
-                    alt="фото">
-                    <button class="element__delete-button" type="button" id="deletePhoto"></button>
+                    alt="#">
+                <button class="element__delete-button" type="button"
+                    id="deletePhoto"></button>
                 <div class="element__text-zone">
                     <h2 class="element__title"></h2>
                     <button class="element__like" type="button" name="like"></button>

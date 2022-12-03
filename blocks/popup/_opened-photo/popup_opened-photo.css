@@ -1,0 +1,14 @@
+.popup_opened-photo {
+    display: flex;
+    z-index: 3;
+    animation: animate-very-dark 0.3s linear both;
+}
+
+@keyframes animate-very-dark {
+    form {
+        background-color: transparent;
+    }
+
+    to {
+        background-color: rgba(0, 0, 0, 0.9);
+    }}
