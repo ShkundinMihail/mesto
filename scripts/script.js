@@ -85,7 +85,7 @@ const addPhoto = function (event) {
     const newCard = createElement(cardData);
     elements.prepend(newCard);
 
-    closePopupPhoto();
+    closePopupAddPhoto();
 
     popupPhotoForm.reset();
 };
