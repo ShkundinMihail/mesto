@@ -1,4 +1,4 @@
-import initialCards from './cards.js'; 
+import initialCards from './cards.js';
 
 const nameAuthor = document.querySelector('.author__name');
 const workAuthor = document.querySelector('.author__work');
@@ -22,23 +22,23 @@ const titlePhotoValue = document.querySelector('#titlePhoto');
 const linkPhotoValue = document.querySelector('#linkPhoto');
 
 //Закрытие попапов
-const closePopup = function (item, mod) {
-    item.classList.remove(mod);
+const closePopup = function (item) {
+    item.classList.remove('popup_opened');
 };
-const closePopupEditAuthor = function () { closePopup(popupEditAuthor, 'popup_opened') };
-const closePopupAddPhoto = function () { closePopup(popupElementAddPhoto, 'popup_opened') };
-const closePopupPhoto = function () { closePopup(openPhoto, 'popup_opened-photo') };
+const closePopupEditAuthor = function () { closePopup(popupEditAuthor) };
+const closePopupAddPhoto = function () { closePopup(popupElementAddPhoto) };
+const closePopupPhoto = function () { closePopup(openPhoto) };
 //Открытие попапов
-const openPopup = function (item, mod) {
-    item.classList.add(mod);
+const openPopup = function (item) {
+    item.classList.add('popup_opened');
 };
 const openPopupEditAuthor = function () {
-    openPopup(popupEditAuthor,'popup_opened');
+    openPopup(popupEditAuthor);
     inputNameAuthor.value = nameAuthor.textContent;
     inputWorkAuthor.value = workAuthor.textContent;
 };
 
-const openPopupAddPhoto = function () { openPopup(popupElementAddPhoto,'popup_opened'); };
+const openPopupAddPhoto = function () { openPopup(popupElementAddPhoto); };
 
 //Добавление карточек из массива
 function createElement(item) {
@@ -52,7 +52,7 @@ function createElement(item) {
     cardPhoto.alt = item.alt;
 
     const openCard = function () {
-        openPopup(openPhoto,'popup_opened-photo');
+        openPopup(openPhoto);
         openTitle.textContent = cardTitle.textContent;
         openCardPhoto.src = cardPhoto.src;
     };
@@ -91,12 +91,10 @@ const addPhoto = function (event) {
 };
 //Закрытие по оверлею
 const closePopupByClickOnOverlay = event => {
-    if (event.target === event.currentTarget) {
-    closePopupEditAuthor(event.currentTarget);
-    closePopupAddPhoto(event.currentTarget);
-    closePopupPhoto(event.currentTarget);
-    }
-    }
+    if (event.target === event.currentTarget) {   
+        closePopup(event.currentTarget);        //получилось методом 'тыка' т.к. не понимаю логики работы.
+    };
+}
 //Добавляет те же данные что на отображаются на странице в попап редактирования автора
 const editAuthorInfo = function () {
     nameAuthor.textContent = inputNameAuthor.value;

@@ -7,6 +7,7 @@
     flex-direction: column;
     position: fixed;
     animation: animate-dark 0.3s linear both;
+    --background-popup: rgba(0, 0, 0, 0.5);
 }
 
 @keyframes animate-dark {
@@ -15,7 +16,7 @@
     }
 
     to {
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: var(--background-popup);
     }
 }
 
