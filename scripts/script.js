@@ -1,33 +1,47 @@
 import initialCards from './cards.js';
 
-const nameAuthor = document.querySelector('.author__name');
-const workAuthor = document.querySelector('.author__work');
-const editAuthorButton = document.querySelector('.author__edit');
-const popupEditAuthor = document.querySelector('#edit-profile');
-const popupElementAddPhoto = document.querySelector('#add-card');
-const closeButtonEditAuthor = document.querySelector('#close-edit-author');
-const closeButtonAddPhoto = document.querySelector('#close-add-photo');
-const closeButtonPhoto = document.querySelector('#close-photo-popup')
-const popupFormAuthor = document.querySelector('.popup__author-edit');
-const inputNameAuthor = document.querySelector('.popup__input-style_edit_name');
-const inputWorkAuthor = popupFormAuthor.querySelector('.popup__input-style_edit_work');
-const elements = document.querySelector('.elements');
-const elementTemplate = document.querySelector('#element-template').content.querySelector('.element');
-const buttonAddCard = document.querySelector('.profile__add-photo');
-const openPhoto = document.querySelector('#open-photo');
-const openCardPhoto = openPhoto.querySelector('.popup__open-photo');
-const openTitle = document.querySelector('.popup__open-title');
-const popupPhotoForm = document.querySelector('#popupPhotoForm');
-const titlePhotoValue = document.querySelector('#titlePhoto');
-const linkPhotoValue = document.querySelector('#linkPhoto');
+const nameAuthor = document.querySelector('.author__name');                               // на странице автор имя
+const workAuthor = document.querySelector('.author__work');                               // на странице автор работа
+const editAuthorButton = document.querySelector('.author__edit');                         // вызов  формы изменения автора
+const buttonAddCard = document.querySelector('.profile__add-photo');                      //добавить фото на страницу
+const openPhoto = document.querySelector('#open-photo');                                  // открыть фото в отдельном попапе
+
+const popupEditAuthor = document.querySelector('#edit-profile');                          // попап автора
+const closeButtonEditAuthor = document.querySelector('#close-edit-author');               //close для попапа автора
+const popupFormAuthor = document.querySelector('.popup__author-edit');                    // форма попапа изменения автора
+const inputNameAuthor = document.querySelector('.popup__input-style_edit_name');          //поле ввода автора имя
+const inputWorkAuthor = popupFormAuthor.querySelector('.popup__input-style_edit_work');   //поле ввода автора работа
+
+const popupElementAddPhoto = document.querySelector('#add-card');                         //попап добавления фоток
+const closeButtonAddPhoto = document.querySelector('#close-add-photo');                   //закрытие попапа добавления фоток
+const titlePhotoValue = document.querySelector('#titlePhoto');                            // поле ввода название карточки
+const linkPhotoValue = document.querySelector('#linkPhoto');                              //поле ввода ссылка на картинку
+const popupPhotoForm = document.querySelector('#popupPhotoForm');                         //форма попапа добавления фото
+
+const closeButtonPhoto = document.querySelector('#close-photo-popup');                    //закрыть попап с фото кнопка
+const openCardPhoto = openPhoto.querySelector('.popup__open-photo');                      //фото открытое в попапе
+const openTitle = document.querySelector('.popup__open-title');                           //название открытое в попапе
+
+const elements = document.querySelector('.elements');                                     //место для контента из DOM
+const elementTemplate = document.querySelector('#element-template').content.querySelector('.element');//шаблон карточек
 
 //Закрытие попапов
 const closePopup = function (item) {
     item.classList.remove('popup_opened');
 };
-const closePopupEditAuthor = function () { closePopup(popupEditAuthor) };
+//закрытие на esc
+const closePopupOnClickEsc = (e) =>{
+    if(e.key === 'Escape'){
+    const popups = [...document.querySelectorAll('.popup')];
+    popups.forEach(el=>{
+      el.classList.remove('popup_opened');
+    });
+};
+};
+const closePopupEditAuthor = function () { closePopup(popupEditAuthor)};
 const closePopupAddPhoto = function () { closePopup(popupElementAddPhoto) };
 const closePopupPhoto = function () { closePopup(openPhoto) };
+
 //Открытие попапов
 const openPopup = function (item) {
     item.classList.add('popup_opened');
@@ -40,7 +54,7 @@ const openPopupEditAuthor = function () {
 
 const openPopupAddPhoto = function () { openPopup(popupElementAddPhoto); };
 
-//Добавление карточек из массива
+//Добавление карточек из массива также лайки ,делиты 
 function createElement(item) {
     const card = elementTemplate.cloneNode(true);
     const cardTitle = card.querySelector('.element__title');
@@ -91,7 +105,7 @@ const addPhoto = function (event) {
 };
 //Закрытие по оверлею
 const closePopupByClickOnOverlay = event => {
-    if (event.target === event.currentTarget) {   
+    if (event.target === event.currentTarget) {
         closePopup(event.currentTarget);        //получилось методом 'тыка' т.к. не понимаю логики работы.
     };
 }
@@ -110,9 +124,13 @@ const saveFormInformationAuthor = function (evt) {
 popupFormAuthor.addEventListener('submit', saveFormInformationAuthor);
 editAuthorButton.addEventListener('click', openPopupEditAuthor);
 buttonAddCard.addEventListener('click', openPopupAddPhoto);
+
 closeButtonEditAuthor.addEventListener('click', closePopupEditAuthor);
 closeButtonAddPhoto.addEventListener('click', closePopupAddPhoto);
 closeButtonPhoto.addEventListener('click', closePopupPhoto);
+
+document.addEventListener('keydown' , closePopupOnClickEsc)   //закрытие на esc  
+
 popupEditAuthor.addEventListener('click', closePopupByClickOnOverlay);
 popupElementAddPhoto.addEventListener('click', closePopupByClickOnOverlay);
 openPhoto.addEventListener('click', closePopupByClickOnOverlay);

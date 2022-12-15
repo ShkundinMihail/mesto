@@ -1,27 +1,14 @@
 .popup {
     width: 100%;
     height: 100%;
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     position: fixed;
-    animation: animate-dark 0.3s linear both;
+    transition: all .1s linear;
+    visibility: hidden;
+    transform: scale(.5);
+    opacity: 0;
     --background-popup: rgba(0, 0, 0, 0.5);
-}
-
-@keyframes animate-dark {
-    form {
-        background-color: transparent;
-    }
-
-    to {
-        background-color: var(--background-popup);
-    }
-}
-
-@media screen and (max-width: 620px) {
-    .popup {
-        gap: 12px;
-    }
 }

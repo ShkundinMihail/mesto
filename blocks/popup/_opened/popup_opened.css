@@ -1,4 +1,7 @@
 .popup_opened {
-    display: flex;
     z-index: 3;
+    visibility: visible;
+    transform: scale(1);
+    opacity: 1;
+    background-color: var(--background-popup);
 }
