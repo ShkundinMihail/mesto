@@ -30,15 +30,14 @@ const closePopup = function (item) {
     item.classList.remove('popup_opened');
 };
 //закрытие на esc
-const closePopupOnClickEsc = (e) =>{
-    if(e.key === 'Escape'){
-    const popups = [...document.querySelectorAll('.popup')];
-    popups.forEach(el=>{
-      el.classList.remove('popup_opened');
-    });
+const closePopupOnClickEsc = (e) => {
+    if (e.key === 'Escape') {
+        const popups = [...document.querySelectorAll('.popup')];
+        popups.forEach(item => {
+            if (item.getAttribute('class') === 'popup popup_opened' || item.getAttribute('class') === 'popup popup_photo popup_opened') { closePopup(item) }});    
+    };// вроде работает. Но выглядит колхозно. Видимо не хватает знаний 
 };
-};
-const closePopupEditAuthor = function () { closePopup(popupEditAuthor)};
+const closePopupEditAuthor = function () { closePopup(popupEditAuthor) };
 const closePopupAddPhoto = function () { closePopup(popupElementAddPhoto) };
 const closePopupPhoto = function () { closePopup(openPhoto) };
 
@@ -52,7 +51,13 @@ const openPopupEditAuthor = function () {
     inputWorkAuthor.value = workAuthor.textContent;
 };
 
-const openPopupAddPhoto = function () { openPopup(popupElementAddPhoto); };
+const openPopupAddPhoto = function () {
+    openPopup(popupElementAddPhoto);
+    const button = document.querySelector('#savePhoto');
+    button.disabled = 'disabled';                               //сделано босс 
+    button.classList.add('popup__save_disabled');
+};
+
 
 //Добавление карточек из массива также лайки ,делиты 
 function createElement(item) {
@@ -65,13 +70,33 @@ function createElement(item) {
     cardPhoto.src = item.link;
     cardPhoto.alt = item.alt;
 
+
+
+
+    const closePopupOnClickEsc = (e) => {
+        if (e.key === 'Escape') {
+            const popups = [...document.querySelectorAll('.popup')];
+            popups.forEach(item => {
+                if (item.getAttribute('class') === 'popup popup_opened' || item.getAttribute('class') === 'popup popup_photo popup_opened') { closePopup(item) }});    
+        };// вроде работает. Но выглядит колхозно. Видимо не хватает знаний 
+    };
+
+
+
+
+
+
+
+    
     const openCard = function () {
         openPopup(openPhoto);
         openTitle.textContent = cardTitle.textContent;
         openCardPhoto.src = cardPhoto.src;
+        openCardPhoto.alt = cardTitle.textContent;
+        openPhoto.addEventListener('keydown', closePopupOnClickEsc);
     };
     cardPhoto.addEventListener('click', openCard);
-
+    cardPhoto.addEventListener('keydown', closePopupOnClickEsc);
     const elementLikeActive = function (e) {
         e.target.classList.toggle('element__like_active');
     };
@@ -80,6 +105,7 @@ function createElement(item) {
         event.target.closest('.element').remove();
     };
     photoButtonDelete.addEventListener('click', deletePhoto);
+    card.addEventListener('keydown', closePopupOnClickEsc);
     return card;
 };
 
@@ -106,7 +132,7 @@ const addPhoto = function (event) {
 //Закрытие по оверлею
 const closePopupByClickOnOverlay = event => {
     if (event.target === event.currentTarget) {
-        closePopup(event.currentTarget);        //получилось методом 'тыка' т.к. не понимаю логики работы.
+        closePopup(event.currentTarget);        
     };
 }
 //Добавляет те же данные что на отображаются на странице в попап редактирования автора
@@ -122,6 +148,7 @@ const saveFormInformationAuthor = function (evt) {
 };
 //обработчики
 popupFormAuthor.addEventListener('submit', saveFormInformationAuthor);
+
 editAuthorButton.addEventListener('click', openPopupEditAuthor);
 buttonAddCard.addEventListener('click', openPopupAddPhoto);
 
@@ -129,7 +156,9 @@ closeButtonEditAuthor.addEventListener('click', closePopupEditAuthor);
 closeButtonAddPhoto.addEventListener('click', closePopupAddPhoto);
 closeButtonPhoto.addEventListener('click', closePopupPhoto);
 
-document.addEventListener('keydown' , closePopupOnClickEsc)   //закрытие на esc  
+editAuthorButton.addEventListener('keydown',closePopupOnClickEsc);   //закрытие на esc  
+buttonAddCard.addEventListener('keydown', closePopupOnClickEsc);
+
 
 popupEditAuthor.addEventListener('click', closePopupByClickOnOverlay);
 popupElementAddPhoto.addEventListener('click', closePopupByClickOnOverlay);

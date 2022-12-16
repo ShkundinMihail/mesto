@@ -1,6 +1,6 @@
 .popup__input-style {
     padding: 0 0 9px 0;
-    margin-top: 11px;
+    margin-top: 28px;
     border: none;
     font-size: 14px;
     line-height: 17px;
@@ -8,6 +8,7 @@
     max-width: 358px;
     width: 100%;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
+    position: relative;
 
 }
 

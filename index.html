@@ -62,8 +62,9 @@
                         maxlength="40"
                         required
                         value=""
-                        data-valid-value="в поле «Имя» должно быть от 2 до 40 символов">
-                    <span class="popup__form-error" id="name-error"></span>
+                        data-valid-value="в поле «Имя» должно быть от 2 до 40
+                        символов">
+                    <span class="popup__form-error popup__form-error_position" id="name-error"></span>
                     <input
                         class="popup__input-style popup__input-style_edit_work"
                         name="work"
@@ -74,7 +75,8 @@
                         maxlength="200"
                         required
                         value=""
-                        data-valid-value="в поле «О себе» должно быть от 2 до 200 символов">
+                        data-valid-value="в поле «О себе» должно быть от 2 до
+                        200 символов">
                     <span class="popup__form-error" id="work-error"></span>
                     <button type="submit" class="popup__save"
                         name="submit-form">Сохранить</button>
@@ -100,15 +102,17 @@
                         type="text"
                         minlength="2"
                         maxlength="30"
-                        data-valid-value="в поле «Название» должно быть от 2 до 30 символов">
-                        <span class="popup__form-error" id="titlePhoto-error"></span>
-                    <input class="popup__input-style popup__input-style_edit_work"
+                        data-valid-value="в поле «Название» должно быть от 2 до
+                        30 символов">
+                    <span class="popup__form-error popup__form-error_position"
+                        id="titlePhoto-error"></span>
+                    <input class="popup__input-style
+                        popup__input-style_edit_work"
                         id="linkPhoto"
                         required
                         placeholder="Ссылка на картинку"
-                        type="url"
-                        data-valid-value="в поле «О ">
-                        <span class="popup__form-error" id="linkPhoto-error"></span>
+                        type="url">
+                    <span class="popup__form-error" id="linkPhoto-error"></span>
                     <button type="submit" class="popup__save" id="savePhoto"
                         name="submit-form">Создать</button>
                 </form>
@@ -127,7 +131,7 @@
                 <h2 class="popup__open-title"></h2>
             </div>
         </div>
-        <script src="scripts/script.js"   type="module"></script>
+        <script src="scripts/script.js" type="module"></script>
         <script src="scripts/validate.js" type="module"></script>
         <template id="element-template">
             <article class="element" lang="en ru">
