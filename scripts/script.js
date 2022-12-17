@@ -2,10 +2,10 @@ import initialCards from './cards.js';
 
 const nameAuthor = document.querySelector('.author__name');                               // на странице автор имя
 const workAuthor = document.querySelector('.author__work');                               // на странице автор работа
-const editAuthorButton = document.querySelector('.author__edit');                         // вызов  формы изменения автора
+const editAuthorButton = document.querySelector('.author__edit');                         // вызов  формы изменения автора кнопка
 const buttonAddCard = document.querySelector('.profile__add-photo');                      //добавить фото на страницу
 const openPhoto = document.querySelector('#open-photo');                                  // открыть фото в отдельном попапе
-
+const abc = document.querySelector('.popup__close')
 const popupEditAuthor = document.querySelector('#edit-profile');                          // попап автора
 const closeButtonEditAuthor = document.querySelector('#close-edit-author');               //close для попапа автора
 const popupFormAuthor = document.querySelector('.popup__author-edit');                    // форма попапа изменения автора
@@ -30,20 +30,27 @@ const closePopup = function (item) {
     item.classList.remove('popup_opened');
 };
 //закрытие на esc
+
 const closePopupOnClickEsc = (e) => {
-    if (e.key === 'Escape') {
-        const popups = [...document.querySelectorAll('.popup')];
-        popups.forEach(item => {
-            if (item.getAttribute('class') === 'popup popup_opened' || item.getAttribute('class') === 'popup popup_photo popup_opened') { closePopup(item) }});    
-    };// вроде работает. Но выглядит колхозно. Видимо не хватает знаний 
+    const popups = [...document.querySelectorAll('.popup')];
+    popups.forEach(item => {
+        if (e.key === 'Escape') {
+            closePopup(item);
+        }
+    })
 };
+
 const closePopupEditAuthor = function () { closePopup(popupEditAuthor) };
 const closePopupAddPhoto = function () { closePopup(popupElementAddPhoto) };
-const closePopupPhoto = function () { closePopup(openPhoto) };
+const closePopupPhoto = function () {
+    closePopup(openPhoto)
+    document.removeEventListener("keydown", closePopupOnClickEsc);
+};
 
 //Открытие попапов
 const openPopup = function (item) {
     item.classList.add('popup_opened');
+    item.addEventListener('keydown', closePopupOnClickEsc)
 };
 const openPopupEditAuthor = function () {
     openPopup(popupEditAuthor);
@@ -53,10 +60,10 @@ const openPopupEditAuthor = function () {
 
 const openPopupAddPhoto = function () {
     openPopup(popupElementAddPhoto);
-    const button = document.querySelector('#savePhoto');
-    button.disabled = 'disabled';                               //сделано босс 
-    button.classList.add('popup__save_disabled');
-};
+    const button = document.querySelector('#savePhoto');//найдем кнопку
+    button.disabled = 'disabled';                       //дизактивируем                       
+    button.classList.add('popup__save_disabled');       //подкрасим
+};                                                      //сделано босс !!!
 
 
 //Добавление карточек из массива также лайки ,делиты 
@@ -70,49 +77,32 @@ function createElement(item) {
     cardPhoto.src = item.link;
     cardPhoto.alt = item.alt;
 
-
-
-
-    const closePopupOnClickEsc = (e) => {
-        if (e.key === 'Escape') {
-            const popups = [...document.querySelectorAll('.popup')];
-            popups.forEach(item => {
-                if (item.getAttribute('class') === 'popup popup_opened' || item.getAttribute('class') === 'popup popup_photo popup_opened') { closePopup(item) }});    
-        };// вроде работает. Но выглядит колхозно. Видимо не хватает знаний 
-    };
-
-
-
-
-
-
-
-    
     const openCard = function () {
         openPopup(openPhoto);
         openTitle.textContent = cardTitle.textContent;
         openCardPhoto.src = cardPhoto.src;
         openCardPhoto.alt = cardTitle.textContent;
-        openPhoto.addEventListener('keydown', closePopupOnClickEsc);
+        document.addEventListener("keydown", closePopupOnClickEsc);//не придумал ничего лучше. пробовал ставить обработчик на cardPhoto не работает
     };
     cardPhoto.addEventListener('click', openCard);
-    cardPhoto.addEventListener('keydown', closePopupOnClickEsc);
     const elementLikeActive = function (e) {
         e.target.classList.toggle('element__like_active');
     };
     likeElement.addEventListener('click', elementLikeActive);
     const deletePhoto = function (event) {
-        event.target.closest('.element').remove();
+        card.remove();
     };
     photoButtonDelete.addEventListener('click', deletePhoto);
     card.addEventListener('keydown', closePopupOnClickEsc);
+
+
+
     return card;
 };
 
 initialCards.forEach(function (item) {
     const newElement = createElement(item);
     elements.append(newElement);
-
 });
 //Добавление карточек из попапа
 const addPhoto = function (event) {
@@ -124,15 +114,13 @@ const addPhoto = function (event) {
     };
     const newCard = createElement(cardData);
     elements.prepend(newCard);
-
     closePopupAddPhoto();
-
     popupPhotoForm.reset();
 };
 //Закрытие по оверлею
 const closePopupByClickOnOverlay = event => {
     if (event.target === event.currentTarget) {
-        closePopup(event.currentTarget);        
+        closePopup(event.currentTarget);
     };
 }
 //Добавляет те же данные что на отображаются на странице в попап редактирования автора
@@ -156,9 +144,8 @@ closeButtonEditAuthor.addEventListener('click', closePopupEditAuthor);
 closeButtonAddPhoto.addEventListener('click', closePopupAddPhoto);
 closeButtonPhoto.addEventListener('click', closePopupPhoto);
 
-editAuthorButton.addEventListener('keydown',closePopupOnClickEsc);   //закрытие на esc  
+editAuthorButton.addEventListener('keydown', closePopupOnClickEsc);//следит за esc только при открытом попапе. Установка слушателя на сам попап результатов не дает
 buttonAddCard.addEventListener('keydown', closePopupOnClickEsc);
-
 
 popupEditAuthor.addEventListener('click', closePopupByClickOnOverlay);
 popupElementAddPhoto.addEventListener('click', closePopupByClickOnOverlay);
