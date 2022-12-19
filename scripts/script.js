@@ -90,9 +90,6 @@ function createElement(item) {
         card.remove();
     };
     photoButtonDelete.addEventListener('click', deletePhoto);
-    card.addEventListener('keydown', closePopupOnClickEsc);
-
-
 
     return card;
 };
