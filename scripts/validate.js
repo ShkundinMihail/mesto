@@ -17,8 +17,9 @@ const toggleButton = (inputs, button, config) => {                              
         button.classList.remove(config.inactiveButtonClass);                         //
         button.disabled = '';                                                        //функция дизейбла кнопки. 
     } else {                                                                         //                                                                               //                                                                                   
-        button.classList.add(config.inactiveButtonClass);                            //
-        button.disabled = 'disabled';                                                //
+        // button.classList.add(config.inactiveButtonClass);                         //
+        // button.disabled = 'disabled';                                             //
+        //button.classList.add(config.errorClass)                                    //
     }                                                                                //
 };                                                                                   //
 
@@ -46,7 +47,7 @@ enableValidation({                                                              
     submitButtonSelector: '.popup__save',                                            //  _        _____   _         ______  ______  _         _______   _______
     inactiveButtonClass: 'popup__save_disabled',                                     // | \    | |     | | \    |  |       |       | \    |  |         |
     inputErrorClass: 'popup__input-style_error',                                     // |  \   | |     | |  \   |  |_____  |______ |  \   |  |______   |_______
-    errorClass: 'popup__error_visible'                                               // |   \  | |     | |   \  |        | |       |   \  |         |  |
+    errorClass: 'popup__save_disabled'                                               // |   \  | |     | |   \  |        | |       |   \  |         |  |
 });                                                                                  // |    \_| |_____| |    \_|  ______| |______ |    \_|  _______|  |_______
 
 

@@ -28,16 +28,14 @@ const elementTemplate = document.querySelector('#element-template').content.quer
 //Закрытие попапов
 const closePopup = function (item) {
     item.classList.remove('popup_opened');
+    document.removeEventListener('keydown', closePopupOnClickEsc);
 };
 //закрытие на esc
-
 const closePopupOnClickEsc = (e) => {
-    const popups = [...document.querySelectorAll('.popup')];
-    popups.forEach(item => {
-        if (e.key === 'Escape') {
-            closePopup(item);
-        }
-    })
+    if (e.key === 'Escape') {
+        const popupOpened = document.querySelector('.popup_opened');
+        closePopup(popupOpened);
+    }
 };
 
 const closePopupEditAuthor = function () { closePopup(popupEditAuthor) };
@@ -50,7 +48,7 @@ const closePopupPhoto = function () {
 //Открытие попапов
 const openPopup = function (item) {
     item.classList.add('popup_opened');
-    item.addEventListener('keydown', closePopupOnClickEsc)
+    document.addEventListener('keydown', closePopupOnClickEsc)
 };
 const openPopupEditAuthor = function () {
     openPopup(popupEditAuthor);
@@ -82,7 +80,6 @@ function createElement(item) {
         openTitle.textContent = cardTitle.textContent;
         openCardPhoto.src = cardPhoto.src;
         openCardPhoto.alt = cardTitle.textContent;
-        document.addEventListener("keydown", closePopupOnClickEsc);//не придумал ничего лучше. пробовал ставить обработчик на cardPhoto не работает
     };
     cardPhoto.addEventListener('click', openCard);
     const elementLikeActive = function (e) {
@@ -143,9 +140,6 @@ buttonAddCard.addEventListener('click', openPopupAddPhoto);
 closeButtonEditAuthor.addEventListener('click', closePopupEditAuthor);
 closeButtonAddPhoto.addEventListener('click', closePopupAddPhoto);
 closeButtonPhoto.addEventListener('click', closePopupPhoto);
-
-editAuthorButton.addEventListener('keydown', closePopupOnClickEsc);//следит за esc только при открытом попапе. Установка слушателя на сам попап результатов не дает
-buttonAddCard.addEventListener('keydown', closePopupOnClickEsc);
 
 popupEditAuthor.addEventListener('click', closePopupByClickOnOverlay);
 popupElementAddPhoto.addEventListener('click', closePopupByClickOnOverlay);
