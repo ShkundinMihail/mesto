@@ -16,18 +16,18 @@
         <main class="content">
             <section class="profile">
                 <div class="author">
-                    <img class="author__avatar" src="images/kusto-photo.jpg"
-                        alt="Жак-ив Кусто">
+                    <img class="author__avatar" src="images/sponge.png"
+                        alt="Он живет на дне">
                     <div class="author__info-zone">
                         <div class="author__title-zone">
-                            <h1 class="author__name">Жак&#8209;Ив&nbsp;Кусто</h1>
+                            <h1 class="author__name">Спанч&nbsp;Боб</h1>
                             <button type="button" name="edit-author"
                                 class="author__edit"><img
                                     class="author__edit-icon"
                                     src="images/edit-icon.svg" alt="изменить">
                             </button>
                         </div>
-                        <p class="author__work">Исследователь&nbsp;океана</p>
+                        <p class="author__work">На&nbsp;дне&nbsp;океана</p>
                     </div>
 
                 </div>
@@ -52,19 +52,24 @@
                 <h3 class="popup__title">Редактировать профиль</h3>
                 <form class="popup__author-edit" method="post"
                     name="infoAuthor" novalidate>
-                    <input
-                        class="popup__input-style popup__input-style_edit_name"
-                        name="name"
-                        id="name"
-                        placeholder="Имя"
-                        type="text"
-                        minlength="2"
-                        maxlength="40"
-                        required
-                        value=""
-                        data-valid-value="в поле «Имя» должно быть от 2 до 40
-                        символов">
-                    <span class="popup__form-error popup__form-error_position" id="name-error"></span>
+                    
+                        <input
+                            class="popup__input-style
+                            popup__input-style_edit_name"
+                            name="name"
+                            id="name"
+                            placeholder="Имя"
+                            type="text"
+                            minlength="2"
+                            maxlength="40"
+                            required
+                            value=""
+                            data-valid-value="в поле «Имя» должно быть от 2 до
+                            40
+                            символов">
+                        <span class="popup__form-error
+                            popup__form-error_position" id="name-error"></span>
+                    
                     <input
                         class="popup__input-style popup__input-style_edit_work"
                         name="work"
@@ -132,7 +137,6 @@
             </div>
         </div>
         <script src="scripts/script.js" type="module"></script>
-        <script src="scripts/validate.js" type="module"></script>
         <template id="element-template">
             <article class="element" lang="en ru">
                 <img class="element__photo" id="photo"

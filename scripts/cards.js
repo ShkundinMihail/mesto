@@ -28,6 +28,21 @@ const initialCards = [
       name: 'ExoduS',
       link: 'https://i.pinimg.com/originals/7d/0d/05/7d0d05cd1fcb7561f90cff8a83b79e68.jpg',
       alt: 'Фото группы Эксодус'
-    }
+    },
+    {
+      name: 'МеталАпокалипсис',
+      link: 'https://storage.myseldon.com/news-pict-d8/D8D6185DD4CFE22A0F0A0820EEEBCAE1',
+      alt: 'Фото группы Метал Апокалипсис'
+    },
+    {
+      name: 'Южный парк',
+      link: 'https://www.windoworld.ru/wallpapers/south-park/1/1-1920.jpg',
+      alt: 'Фото Южного парка'
+    },
+    {
+      name: 'Мистр ПиклЗ',
+      link: 'https://kartinkin.net/pics/uploads/posts/2022-08/1661337961_63-kartinkin-net-p-mister-piklz-oboi-krasivo-72.jpg',
+      alt: 'Фото собаки'
+    },
   ]; 
-  export default initialCards;
+  export  {initialCards} ;
