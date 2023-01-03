@@ -1,32 +1,35 @@
 
 class FormValidator {
-    constructor(form, input, button, error, inputs) {
-        this._form = form;
-        this._input = input;
-        this._button = button;
-        this._error = error;
-        this._inputs = inputs;
+    constructor(config) {
+        this._form = config.formSelector;
+        this._input = config.inputSelector;
+        this._button = config.submitButtonSelector;
+        this._btnDis = config.inactiveButtonClass
+        this._error = config.inputErrorClass;
+        this._inputs = config.inputsSelector;
+        console.log(config.formSelector)
     }
+    
     enableValidation() {
         this._buttonStatus();
         this._errorMessage();
     }
     _buttonStatus() {
-        if (this._inputs.every(input => input.validity.valid)) {
+        if ([...this._form.querySelectorAll(this._input)].every(input => input.validity.valid)) {
             this._button.disabled = ''
-            this._button.classList.remove('popup__save_disabled')
+            this._button.classList.remove(this._btnDis)
         } else {
             this._button.disabled = 'disabled'
-            this._button.classList.add('popup__save_disabled')
+            this._button.classList.add(this._btnDis)
         }
     }
     _errorMessage() {
         if (this._input.validity.valid) {
-            this._input.classList.remove('popup__input-style_error')
+            this._input.classList.remove(this._error)
             this._error.textContent = ''
 
         } else {
-            this._input.classList.add('popup__input-style_error')
+            this._input.classList.add(this._error)
             this._error.textContent = this._input.validationMessage
         }
     }
@@ -42,12 +45,19 @@ const megaValidationOfTheGalacticScale = () => {
         });
         inputs.forEach(input => {
             input.addEventListener('input', () => {
-                const error = form.querySelector(`#${input.id}-error`);
-                const valid = new FormValidator(form, input, button, error, inputs);
+                const valid = new FormValidator(objSet);
                 valid.enableValidation()
             });
         });
     });
 }
+
+const objSet = {                                                                  
+    formSelector: '.popup__author-edit',                                             
+    inputSelector: '.popup__input-style',                                          
+    submitButtonSelector: '.popup__save',                                            
+    inactiveButtonClass: 'popup__save_disabled',                                    
+    inputSelector: 'popup__author-edit'                                             
+};                                                                                 
 
 export { megaValidationOfTheGalacticScale };
