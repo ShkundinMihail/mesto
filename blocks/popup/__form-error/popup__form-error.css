@@ -11,4 +11,14 @@
     width: 100%;
     position: absolute;
     z-index: 2;
+    top:194px;
+
+}
+@media screen and (max-width: 620px) {
+    .popup__form-error {
+        max-width: 238px;
+        top:202px;
+        
+
+    }
 }
