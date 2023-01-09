@@ -1,12 +1,12 @@
-import { Card } from './card.js';
+import { Card } from './Card.js';
 import { initialCards } from './cards.js';
-import { validationSettings, FormValidator } from './FormValidator.js'
+import { FormValidator } from './FormValidator.js';
+import { validationSettings } from './validationSettings.js';
 
 const nameAuthor = document.querySelector('.author__name');                               // на странице автор имя
 const workAuthor = document.querySelector('.author__work');                               // на странице автор работа
-const AuthorEditButton = document.querySelector('.author__edit');                         // вызов  формы изменения автора кнопка
+const authorEditButton = document.querySelector('.author__edit');                         // вызов  формы изменения автора кнопка
 const buttonAddCard = document.querySelector('.profile__add-photo');                      //добавить фото на страницу
-
 const popupEditAuthor = document.querySelector('#edit-profile');                          // попап автора
 const formEditAuthor = popupEditAuthor.querySelector('[name="infoAuthor"]');              //author form
 const buttonCloseEditAuthor = document.querySelector('#close-edit-author');               //close для попапа автора
@@ -20,37 +20,43 @@ const buttonCloseAddPhoto = document.querySelector('#close-add-photo');         
 const titlePhotoValue = document.querySelector('#titlePhoto');                            // поле ввода название карточки
 const linkPhotoValue = document.querySelector('#linkPhoto');                              //поле ввода ссылка на картинку
 const popupPhotoForm = document.querySelector('#popupPhotoForm');                         //форма попапа добавления фото
-
-const popupPhotoImg = document.querySelector('.popup__open-photo');
+const popupPhoto = document.querySelector('.popup__open-photo');
 const popupPhotoTitle = document.querySelector('.popup__open-title');
 const photoOpen = document.querySelector('#open-photo');
 const popupPhotoCloseButton = document.querySelector('#close-photo-popup');
-//Ышо валидация
+
+//данные об авторе ,такое условие было если не ошибаюсь в 6 проектной
+const dataAuthor = () => {
+    inputNameAuthor.value = nameAuthor.textContent;
+    inputWorkAuthor.value = workAuthor.textContent;
+}
+dataAuthor();
+
+//just validation
 const validation = (form) => {
-    const newValidate = new FormValidator(validationSettings, form)
-    newValidate.enableValidation()
+    const newValidate = new FormValidator(validationSettings, form);
+    newValidate.enableValidation();
 }
-
+validation(formAddPhoto);
+validation(formEditAuthor);
 //зальём карточки
-const createCard = (array) => {
-    array.forEach((item) => {
-        const card = new Card(item, '#element-template');
-        const cardElement = card.generateCard();
-        contentZone.prepend(cardElement);
-    })
+const createCard = (item) => {
+    const card = new Card(item, '#element-template', openPhotoPopup);
+    const cardElement = card.generateCard();
+    return cardElement;
 }
-
-createCard(initialCards);
-
+initialCards.forEach(item => {
+    contentZone.append(createCard(item));
+});
 //Добавление карточек из попапа
 const addPhoto = function (event) {
     event.preventDefault();
-    const cardData = [{
+    const cardData = {
         name: titlePhotoValue.value,
         link: linkPhotoValue.value,
         alt: titlePhotoValue.value
-    }];
-    createCard(cardData);
+    };
+    contentZone.prepend(createCard(cardData));
     closePopupAddPhoto();
     popupPhotoForm.reset();
 };
@@ -72,37 +78,34 @@ const closePopupOnClickEsc = (e) => {
 const closePopupEditAuthor = function () {
     closePopup(popupEditAuthor)
 };
-const closePopupAddPhoto = function () { 
-    closePopup(popupElementAddPhoto) };
+const closePopupAddPhoto = function () {
+    closePopup(popupElementAddPhoto)
+};
 
-    const closePopupPhoto = () =>{
-        closePopup(photoOpen);
-    }
+const closePopupPhoto = () => {
+    closePopup(photoOpen);
+}
 
 //Открытие попапов
 const openPopup = function (item) {
     item.classList.add('popup_opened');
     document.addEventListener('keydown', closePopupOnClickEsc)
 };
+
 const openPopupEditAuthor = function () {
     openPopup(popupEditAuthor);
-    inputNameAuthor.value = nameAuthor.textContent;
-    inputWorkAuthor.value = workAuthor.textContent;
-    validation(formEditAuthor);
 };
 
 const openPopupAddPhoto = function () {
     openPopup(popupElementAddPhoto);
-    validation(formAddPhoto)
 };
 
-const openPhoto = (e) => {
-    if(e.target.getAttribute('class') === 'element__photo'){
-     openPopup(photoOpen);
-     popupPhotoImg.src = e.target.src;
-     popupPhotoTitle.textContent = e.target.parentElement.querySelector('.element__title').textContent;
-     popupPhotoImg.alt = popupPhotoTitle.textContent;
- }}
+function openPhotoPopup(name, link) {
+    popupPhoto.src = link;
+    popupPhoto.alt = name;
+    popupPhotoTitle.textContent = name;
+    openPopup(photoOpen);
+};
 
 //Закрытие по оверлею
 const closePopupByClickOnOverlay = event => {
@@ -121,19 +124,18 @@ const saveFormInformationAuthor = function (evt) {
     editAuthorInfo();
     closePopupEditAuthor();
 };
+
 //обработчики
 popupFormAuthor.addEventListener('submit', saveFormInformationAuthor);
+popupPhotoForm.addEventListener('submit', addPhoto);
 
-AuthorEditButton.addEventListener('click', openPopupEditAuthor);
+authorEditButton.addEventListener('click', openPopupEditAuthor);
 buttonAddCard.addEventListener('click', openPopupAddPhoto);
-contentZone.addEventListener('click', openPhoto);
 
 buttonCloseEditAuthor.addEventListener('click', closePopupEditAuthor);
 buttonCloseAddPhoto.addEventListener('click', closePopupAddPhoto);
-popupPhotoCloseButton.addEventListener('click',closePopupPhoto);
+popupPhotoCloseButton.addEventListener('click', closePopupPhoto);
 
 popupEditAuthor.addEventListener('click', closePopupByClickOnOverlay);
 popupElementAddPhoto.addEventListener('click', closePopupByClickOnOverlay);
 photoOpen.addEventListener('click', closePopupByClickOnOverlay);
-
-popupPhotoForm.addEventListener('submit', addPhoto);

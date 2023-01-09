@@ -1,9 +1,11 @@
 class Card {
-  constructor(data, templateSelector) {
+  constructor(data, templateSelector, openPhotoPopup) {
     this._name = data.name;
     this._link = data.link;
     this._alt = data.alt;
     this._templateSelector = templateSelector;
+    this._openPhotoPopup= openPhotoPopup;
+    
   }
   //клонируем шаблон//////////////////////////////////////////////////////////////////////////////
   _getTemplate() {
@@ -15,30 +17,38 @@ class Card {
   generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
-    this._element.querySelector('.element__title').textContent = this._name;  //данные
-    this._element.querySelector('.element__photo').src = this._link;
-    this._element.querySelector('.element__photo').alt = this._name;
+    this._titleCard.textContent = this._name;
+    this._imgCard.src = this._link;
+    this._imgCard.alt = this._name;
 
     return this._element;
   }
   //лайк/////////////////////////////////////////////////////////////////////////////
-  _elementLike() {
-    this._element.querySelector('.element__like').classList.toggle('element__like_active');
+  _putLikeElement() {
+    this._likeButton.classList.toggle('element__like_active');
 
   }
   //удаление карточки/////////////////////////////////////////////////////////////////////////
-  _elementDelete() {
+  _deleteElement() {
     this._element.remove();
 
   }
 
   _setEventListeners() {
-    this._element.querySelector('#deletePhoto').addEventListener('click', () => {
-      this._elementDelete()
+    this._titleCard = this._element.querySelector('.element__title');
+    this._imgCard = this._element.querySelector('.element__photo');
+    this._likeButton = this._element.querySelector('.element__like');
+    this._deleteButton = this._element.querySelector('#deletePhoto');
+    
+    this._deleteButton.addEventListener('click', () => {
+      this._deleteElement()
     });
-    this._element.querySelector('.element__like').addEventListener('click', () => {
-      this._elementLike();
+    this._likeButton.addEventListener('click', () => {
+      this._putLikeElement();
     });
+    this._imgCard.addEventListener('click', () =>{ 
+      this._openPhotoPopup(this._name, this._link) 
+    });   
   }
 }
 
