@@ -4,8 +4,8 @@ class Card {
     this._link = data.link;
     this._alt = data.alt;
     this._templateSelector = templateSelector;
-    this._openPhotoPopup= openPhotoPopup;
-    
+    this._openPhotoPopup = openPhotoPopup;
+
   }
   //клонируем шаблон//////////////////////////////////////////////////////////////////////////////
   _getTemplate() {
@@ -39,16 +39,16 @@ class Card {
     this._imgCard = this._element.querySelector('.element__photo');
     this._likeButton = this._element.querySelector('.element__like');
     this._deleteButton = this._element.querySelector('#deletePhoto');
-    
+
     this._deleteButton.addEventListener('click', () => {
       this._deleteElement()
     });
     this._likeButton.addEventListener('click', () => {
       this._putLikeElement();
     });
-    this._imgCard.addEventListener('click', () =>{ 
-      this._openPhotoPopup(this._name, this._link) 
-    });   
+    this._imgCard.addEventListener('click', () => {
+      this._openPhotoPopup(this._name, this._link)
+    });
   }
 }
 

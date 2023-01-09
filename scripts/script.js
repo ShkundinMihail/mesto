@@ -24,7 +24,6 @@ const popupPhoto = document.querySelector('.popup__open-photo');
 const popupPhotoTitle = document.querySelector('.popup__open-title');
 const photoOpen = document.querySelector('#open-photo');
 const popupPhotoCloseButton = document.querySelector('#close-photo-popup');
-
 //данные об авторе ,такое условие было если не ошибаюсь в 6 проектной
 const dataAuthor = () => {
     inputNameAuthor.value = nameAuthor.textContent;
