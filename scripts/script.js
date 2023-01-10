@@ -24,6 +24,7 @@ const popupPhoto = document.querySelector('.popup__open-photo');
 const popupPhotoTitle = document.querySelector('.popup__open-title');
 const photoOpen = document.querySelector('#open-photo');
 const popupPhotoCloseButton = document.querySelector('#close-photo-popup');
+
 //данные об авторе ,такое условие было если не ошибаюсь в 6 проектной
 const dataAuthor = () => {
     inputNameAuthor.value = nameAuthor.textContent;
@@ -32,17 +33,12 @@ const dataAuthor = () => {
 dataAuthor();
 
 //just validation
-// const validation = (form) => {
-//     const newValidate = new FormValidator(validationSettings, form);
-//     newValidate.enableValidation();
-// }
-// validation(formAddPhoto);
-// validation(formEditAuthor);
-
-const profileValidation = new FormValidator(validationSettings, formEditAuthor);
-const newCardValidation = new FormValidator(validationSettings, formAddPhoto);
-profileValidation.enableValidation();
-newCardValidation.enableValidation();  
+const validation = (form) => {
+    const newValidate = new FormValidator(validationSettings, form);
+    newValidate.enableValidation();
+}
+validation(formAddPhoto);
+validation(formEditAuthor);
 //зальём карточки
 const createCard = (item) => {
     const card = new Card(item, '#element-template', openPhotoPopup);
@@ -98,10 +94,13 @@ const openPopup = function (item) {
 };
 
 const openPopupEditAuthor = function () {
+    inputNameAuthor.value = nameAuthor.textContent;
+    inputWorkAuthor.value = workAuthor.textContent;
     openPopup(popupEditAuthor);
 };
 
 const openPopupAddPhoto = function () {
+    newCardValidation.editStatusButton()
     openPopup(popupElementAddPhoto);
 };
 

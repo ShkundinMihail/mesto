@@ -7,7 +7,7 @@ class FormValidator {
         this._btnDisColor = config.inactiveButtonClass;
         this._inputErrorColor = config.inputErrorClass;
     }
-    _editStatusButton() {
+    editStatusButton() {
         if (this._inputsForm.every(input => input.validity.valid)) {
             this._button.disabled = false;
             this._button.classList.remove(this._btnDisColor);
@@ -32,10 +32,9 @@ class FormValidator {
         }
     }
     enableValidation() {
-        this._editStatusButton();
         this._inputsForm.forEach(input => {
             input.addEventListener('input', () => {
-                this._editStatusButton();
+                this.editStatusButton();
                 this._editErrorMessage(input);
                 this._editInputStatus(input);
             });
