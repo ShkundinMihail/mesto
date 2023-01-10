@@ -33,7 +33,7 @@ const initialCards = [
     },
     {
       name: 'Мистр ПиклЗ',
-      link: 'https://kartinkin.net/pics/uploads/posts/2022-08/1661337961_63-kartinkin-net-p-mister-piklz-oboi-krasivo-72.jpg',
+      link: 'https://i.ytimg.com/vi/VN7SpSYs_pc/maxresdefault.jpg',//почему-то перестало подгружаться изображение по ссылке
     },
   ]; 
   export  {initialCards} ;
