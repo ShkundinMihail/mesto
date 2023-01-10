@@ -32,12 +32,17 @@ const dataAuthor = () => {
 dataAuthor();
 
 //just validation
-const validation = (form) => {
-    const newValidate = new FormValidator(validationSettings, form);
-    newValidate.enableValidation();
-}
-validation(formAddPhoto);
-validation(formEditAuthor);
+// const validation = (form) => {
+//     const newValidate = new FormValidator(validationSettings, form);
+//     newValidate.enableValidation();
+// }
+// validation(formAddPhoto);
+// validation(formEditAuthor);
+
+const profileValidation = new FormValidator(validationSettings, formEditAuthor);
+const newCardValidation = new FormValidator(validationSettings, formAddPhoto);
+profileValidation.enableValidation();
+newCardValidation.enableValidation();  
 //зальём карточки
 const createCard = (item) => {
     const card = new Card(item, '#element-template', openPhotoPopup);
@@ -56,8 +61,9 @@ const addPhoto = function (event) {
         alt: titlePhotoValue.value
     };
     contentZone.prepend(createCard(cardData));
+    popupPhotoForm.reset()
     closePopupAddPhoto();
-    popupPhotoForm.reset();
+    
 };
 
 //Закрытие попапов
