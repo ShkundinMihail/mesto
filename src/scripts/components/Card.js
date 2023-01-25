@@ -1,11 +1,10 @@
 class Card {
-  constructor(data, templateSelector, openPhotoPopup) {
+  constructor(data, templateSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._alt = data.alt;
     this._templateSelector = templateSelector;
-    this._openPhotoPopup = openPhotoPopup;
-
+    this._handleCardClick = handleCardClick;
   }
   //клонируем шаблон//////////////////////////////////////////////////////////////////////////////
   _getTemplate() {
@@ -46,7 +45,7 @@ class Card {
       this._putLikeElement();
     });
     this._imgCard.addEventListener('click', () => {
-      this._openPhotoPopup(this._name, this._link)
+      this._handleCardClick(this._name, this._link)
     });
   }
 }

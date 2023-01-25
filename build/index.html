@@ -4,27 +4,25 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" href="images/icon-head.png">
-        <link rel="stylesheet" href="./pages/index.css">
+        <link rel="icon" href="images/icon-head.b1a3959412a793f5ae8a.png">
         <title>Место Россия</title>
-    </head>
-
+    <script defer src="bundle.js"></script><link href="main.css" rel="stylesheet"></head>
     <body class="page">
         <header class="header">
-            <img class="header__logo" src="images/header-logo.svg" alt="лого">
+            <img class="header__logo" src="images/header-logo.bbe2a6eafac19c3d031c.svg" alt="лого">
         </header>
         <main class="content">
             <section class="profile">
                 <div class="author">
-                    <img class="author__avatar" src="images/NewWork.png"
+                    <img class="author__avatar" src="images/NewWork.7a10109f4386a0587d11.png"
                         alt="Он живет на дне">
                     <div class="author__info-zone">
                         <div class="author__title-zone">
-                            <h1 class="author__name">Удильщик</h1>
+                            <h1 class="author__name">Монстр</h1>
                             <button type="button" name="edit-author"
                                 class="author__edit"><img
                                     class="author__edit-icon"
-                                    src="images/edit-icon.svg" alt="изменить">
+                                    src="images/edit-icon.6c7bf05444b9793fdf6e.svg" alt="изменить">
                             </button>
                         </div>
                         <p class="author__work">На&nbsp;дне&nbsp;океана</p>
@@ -34,7 +32,7 @@
                 <button class="profile__add-photo" type="button"
                     name="add-photo"><img
                         class="profile__add-photo-icon"
-                        src="images/addPhoto-icon.svg" alt="добавить фото"></button>
+                        src="images/addPhoto-icon.bed8c136e13907f5eefb.svg" alt="добавить фото"></button>
             </section>
             <section class="elements">
             </section>
@@ -47,29 +45,28 @@
                 <button class="popup__close" id="close-edit-author"
                     type="button" name="close-popup"><img
                         class="popup__close-icon"
-                        src="images/Close-Icon.svg"
+                        src="images/Close-Icon.039f1f5203f653b4bacd.svg"
                         alt="Х"></button>
                 <h3 class="popup__title">Редактировать профиль</h3>
                 <form class="popup__author-edit" method="post"
                     name="infoAuthor" novalidate>
-                    
-                        <input
-                            class="popup__input-style
-                            popup__input-style_edit_name"
-                            name="name"
-                            id="name"
-                            placeholder="Имя"
-                            type="text"
-                            minlength="2"
-                            maxlength="40"
-                            required
-                            value=""
-                            data-valid-value="в поле «Имя» должно быть от 2 до
-                            40
-                            символов">
-                        <span class="popup__form-error
-                            popup__form-error_position" id="name-error"></span>
-                    
+
+                    <input
+                        class="popup__input-style
+                        popup__input-style_edit_name"
+                        name="name"
+                        id="name"
+                        placeholder="Имя"
+                        type="text"
+                        minlength="2"
+                        maxlength="40"
+                        required
+                        value=""
+                        data-valid-value="в поле «Имя» должно быть от 2 до
+                        40
+                        символов">
+                    <span class="popup__form-error
+                        popup__form-error_position" id="name-error"></span>
                     <input
                         class="popup__input-style popup__input-style_edit_work"
                         name="work"
@@ -93,7 +90,7 @@
                 <button class="popup__close" id="close-add-photo" type="button"
                     name="close-popup"><img
                         class="popup__close-icon"
-                        src="images/Close-Icon.svg"
+                        src="images/Close-Icon.039f1f5203f653b4bacd.svg"
                         alt="Х"></button>
                 <h3 class="popup__title">Новое место</h3>
                 <form class="popup__author-edit" id="popupPhotoForm"
@@ -129,14 +126,13 @@
                     id="close-photo-popup" type="button"
                     name="close-popup"><img
                         class="popup__close-icon"
-                        src="images/Close-Icon.svg"
+                        src="images/Close-Icon.039f1f5203f653b4bacd.svg"
                         alt="Х"></button>
                 <img class="popup__open-photo"
                     src="#" alt="фото">
                 <h2 class="popup__open-title"></h2>
             </div>
         </div>
-        <script src="scripts/script.js" type="module"></script>
         <template id="element-template">
             <article class="element" lang="en ru">
                 <img class="element__photo" id="photo"

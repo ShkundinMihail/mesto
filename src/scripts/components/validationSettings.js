@@ -4,5 +4,5 @@ const validationSettings = {
     inactiveButtonClass: 'popup__save_disabled',
     inputErrorClass: 'popup__input-style_error',
 };
-//а больше мне и не нужно
+
 export { validationSettings };

@@ -33,6 +33,6 @@ const initialCards = [
   },
   {
     name: 'Мистр ПиклЗ',
-    link: 'https://i.ytimg.com/vi/VN7SpSYs_pc/maxresdefault.jpg',//почему-то перестало подгружаться изображение по ссылке
+    link: 'https://i.ytimg.com/vi/VN7SpSYs_pc/maxresdefault.jpg',
   },];
 export { initialCards };
