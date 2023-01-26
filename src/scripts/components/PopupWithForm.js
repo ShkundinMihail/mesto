@@ -13,8 +13,11 @@ export default class PopupWithForm extends Popup {
         this._formPopup.reset();
     }
     _getInputValues() {
-        this._dataFormField = this._inputsForm.map(input => input.value);
-        return this._dataFormField
+        this._dataFormFields = {};
+        this._inputsForm.forEach(object=>{
+            this._dataFormFields[object.name] = object.value;
+        })
+        return this._dataFormFields
     }
     setEventListeners() {
         super.setEventListeners();

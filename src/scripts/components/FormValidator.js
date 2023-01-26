@@ -16,6 +16,7 @@ class FormValidator {
             this._button.classList.add(this._btnDisColor);
         }
     }
+
     _editErrorMessage(input) {
         const errorText = this._form.querySelector(`#${input.id}-error`);
         if (input.validity.valid) {
@@ -23,6 +24,14 @@ class FormValidator {
         } else {
             errorText.textContent = input.validationMessage;
         }
+    }
+    resetError() {
+        this._inputsForm.forEach((formInput) => {
+            const errorText = this._form.querySelector(`#${formInput.id}-error`);
+            errorText.textContent = '';
+            formInput.classList.remove(this._inputErrorColor)
+        });
+        this.editStatusButton();
     }
     _editInputStatus(input) {
         if (input.validity.valid) {

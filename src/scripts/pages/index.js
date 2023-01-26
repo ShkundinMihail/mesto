@@ -1,8 +1,8 @@
 import './index.css';
 import { Card } from '../components/Card.js';
-import { initialCards } from '../components/cards.js';
+import { initialCards } from '../utils/cards.js';
 import { FormValidator } from '../components/FormValidator.js';
-import { validationSettings } from '../components/validationSettings.js';
+import { validationSettings } from '../utils/validationSettings.js';
 import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
@@ -14,50 +14,47 @@ const authorInfoSource = new UserInfo({
     work: '.author__work'
 });
 authorEditButton.addEventListener('click', () => {
+    profileValidation.resetError()
     const authorInfo = authorInfoSource.getUserInfo();
     inputNameAuthor.value = authorInfo.name;
     inputWorkAuthor.value = authorInfo.work;
     editAuthor.open();
-    editAuthor.setEventListeners();
 });
+
 const editAuthor = new PopupWithForm(popupEditAuthor, {
     callbackSubmitForm: (value) => {
         authorInfoSource.setUserInfo({
-            nameAuthor: value[0],
-            workAuthor: value[1]
+            nameAuthor: value.name,
+            workAuthor: value.work,
         })
-        editAuthor.setEventListeners();
     }
 });
+editAuthor.setEventListeners();//установил в глобальной области
 /////////////////////////////////////////////////////////////////////////////////////////
 //just validation
 const profileValidation = new FormValidator(validationSettings, formEditAuthor);
 const newCardValidation = new FormValidator(validationSettings, formAddPhoto);
 profileValidation.enableValidation();
 newCardValidation.enableValidation();
-//функция которая дает возможность открывать фотки////////////////////////////////////// 
-const handleCardClick = (name, link) => {
-    const PopupPicture = new PopupWithImage(photoOpen);
-    PopupPicture.open(name, link);
-    PopupPicture.setEventListeners();
-}
+//экземпляр класса который дает возможность открывать фотки////////////////////////////////////// 
+const popupPicture = new PopupWithImage(photoOpen);
+popupPicture.setEventListeners();
 //добавление фоток из попапа////////////////////////////////////////////////////////////
 const justMakingCard = (item) => {
-    const card = new Card(item, '#element-template', handleCardClick);
+    const card = new Card(item, '#element-template', { handleCardClick: (name, link) => { popupPicture.open(name, link) } });
     const cardElement = card.generateCard();
     return cardElement
 }
 const addCardFromPopup = new PopupWithForm(popupElementAddPhoto, {
     callbackSubmitForm: (value) => {
-        const cardData = [{ name: value[0], link: value[1] }]
-        console.log(cardData)
-        const aaa = new Section({
+        const cardData = [{ name: value.title, link: value.link }]
+        const placeForPhoto = new Section({
             data: cardData,
             renderer: (item) => {
-                aaa.addItemToTop(justMakingCard(item));
+                placeForPhoto.addItemToTop(justMakingCard(item));
             }
         }, contentZone)
-        aaa.renderItems()
+        placeForPhoto.renderItems()
         addCardFromPopup.close();
     }
 })
@@ -66,7 +63,7 @@ addCardFromPopup.setEventListeners();
 buttonAddCard.addEventListener('click', () => {
     newCardValidation.editStatusButton();
     addCardFromPopup.open();
-}, contentZone);
+});
 
 //добавление фоток из массива cards/////////////////////////////////////////////////////
 const cardsFromArray = new Section({

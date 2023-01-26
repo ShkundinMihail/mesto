@@ -1,5 +1,5 @@
 class Card {
-  constructor(data, templateSelector, handleCardClick) {
+  constructor(data, templateSelector, {handleCardClick}) {
     this._name = data.name;
     this._link = data.link;
     this._alt = data.alt;
@@ -45,7 +45,7 @@ class Card {
       this._putLikeElement();
     });
     this._imgCard.addEventListener('click', () => {
-      this._handleCardClick(this._name, this._link)
+      this._handleCardClick(this._name, this._link);
     });
   }
 }
