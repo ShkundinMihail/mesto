@@ -47,14 +47,7 @@ const justMakingCard = (item) => {
 }
 const addCardFromPopup = new PopupWithForm(popupElementAddPhoto, {
     callbackSubmitForm: (value) => {
-        const cardData = [{ name: value.title, link: value.link }]
-        const placeForPhoto = new Section({
-            data: cardData,
-            renderer: (item) => {
-                placeForPhoto.addItemToTop(justMakingCard(item));
-            }
-        }, contentZone)
-        placeForPhoto.renderItems()
+        cardsFromArray.addItemToTop(justMakingCard({ name: value.title, link: value.link }))
         addCardFromPopup.close();
     }
 })
