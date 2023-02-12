@@ -37,15 +37,14 @@ Promise.all([api.userInfoFromServer()])
 //попап изменения аватара автора///////////////////////////////////////////////////////////////
 const editAvatar = new PopupWithForm(popupEditAvatar, 'Сохранение', {
   callbackSubmitForm: (value) => {
-    editAvatar.loadInfo(true)
     api.changeAvatar(value)
       .then(() => {
+        editAvatar.loadInfo(true)
         authorInfoSource.setUserAvatar({ avatarAuthor: value.avatar })
       })
       .catch((err) => { console.log(`Ошибка данных : ${err}`) })
-      .finally(() => { setTimeout(1000,
-        editAvatar.loadInfo(false),
-      editAvatar.close())})
+      .finally(() => { editAvatar.loadInfo(false)
+      editAvatar.close()})
   }
 });
 buttonEditAvatar.addEventListener('click', () => {
@@ -63,18 +62,17 @@ authorEditButton.addEventListener('click', () => {
 });
 const editAuthor = new PopupWithForm(popupEditAuthor, 'Сохранение', {
   callbackSubmitForm: (value) => {
-    editAuthor.loadInfo(true)
     api.changeUserInfo(value)
       .then(() => {
+        editAuthor.loadInfo(true)
         authorInfoSource.setUserInfo({
           nameAuthor: value.name,
           workAuthor: value.work,
         })
       })
       .catch((err) => { console.log(`Ошибка данных : ${err}`) })
-      .finally(() => {setTimeout(1000,
-        editAuthor.loadInfo(false),
-        editAuthor.close())})
+      .finally(() => { editAuthor.loadInfo(false)
+      editAuthor.close()})
   }
 });
 editAuthor.setEventListeners();//установил в глобальной области
@@ -133,17 +131,15 @@ const justMakingCard = (item) => {
 const popupDeleteImg = new PopupWithConfirm(popupDelete);
 popupDeleteImg.setEventListeners()
 
-const addCardFromPopup = new PopupWithForm(popupElementAddPhoto, 'Создать', {
+const addCardFromPopup = new PopupWithForm(popupElementAddPhoto, 'Сохранение', {
   callbackSubmitForm: (value) => {
-    addCardFromPopup.loadInfo(true)
     api.downloadNewCard(value)
       .then((data) => {
+        addCardFromPopup.loadInfo(true)
         cardsFromArray.addItemToTop(justMakingCard(data))})
       .catch((err) => { console.log(`Ошибка данных : ${err}`) })
-      .finally(() => {
-        setTimeout(1000,
-          addCardFromPopup.loadInfo(false),
-        addCardFromPopup.close())})
+      .finally(() => { addCardFromPopup.loadInfo(false)
+      addCardFromPopup.close()})
 
   }
 })

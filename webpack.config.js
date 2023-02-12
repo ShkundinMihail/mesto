@@ -17,7 +17,7 @@ module.exports = {
     static: path.resolve(__dirname, './dist'),
     open: true,
     compress: true,
-    port: 8091
+    port: 8094
   },
   module: {
     rules: [{
@@ -47,4 +47,4 @@ module.exports = {
     new MiniCssExtractPlugin(),
 
   ]
-} 
+}
