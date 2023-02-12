@@ -4,39 +4,40 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" href="<%=require('./images/icon-head.png')%>">
-
+        <link rel="icon" href="./images/icon-head.png">
+        <link rel="stylesheet" href="./scripts/pages/index.css">
         <title>Место Россия</title>
     </head>
     <body class="page">
         <header class="header">
-            <img class="header__logo" src="<%=require('./images/header-logo.svg')%>"
-            alt="лого">
+            <img class="header__logo" src="./images/header-logo.svg"
+                alt="лого">
         </header>
         <main class="content">
             <section class="profile">
                 <div class="author">
-                    <img class="author__avatar" src="<%=require('./images/NewWork.png')%>"
-                    alt="Он живет на дне">
+                    <img class="author__avatar" src=""
+                        alt="Он живет на дне">
+                    <button class="author__avatar-button"></button>
                     <div class="author__info-zone">
                         <div class="author__title-zone">
-                            <h1 class="author__name">Монстр</h1>
+                            <h1 class="author__name"></h1>
                             <button type="button" name="edit-author"
                                 class="author__edit"><img
                                     class="author__edit-icon"
-                                    src="<%=require('./images/edit-icon.svg')%>"
-                                alt="изменить">
+                                    src="./images/edit-icon.svg"
+                                    alt="изменить">
                             </button>
                         </div>
-                        <p class="author__work">На&nbsp;дне&nbsp;океана</p>
+                        <p class="author__work"></p>
                     </div>
 
                 </div>
                 <button class="profile__add-photo" type="button"
                     name="add-photo"><img
                         class="profile__add-photo-icon"
-                        src="<%=require('./images/addPhoto-icon.svg')%>"
-                    alt="добавить фото"></button>
+                        src="./images/addPhoto-icon.svg"
+                        alt="добавить фото"></button>
             </section>
             <section class="elements">
             </section>
@@ -49,8 +50,8 @@
                 <button class="popup__close" id="close-edit-author"
                     type="button" name="close-popup"><img
                         class="popup__close-icon"
-                        src="<%=require('./images/Close-Icon.svg')%>"
-                    alt="Х"></button>
+                        src="./images/Close-Icon.svg"
+                        alt="Х"></button>
                 <h3 class="popup__title">Редактировать профиль</h3>
                 <form class="popup__author-edit" method="post"
                     name="infoAuthor" novalidate>
@@ -94,8 +95,8 @@
                 <button class="popup__close" id="close-add-photo" type="button"
                     name="close-popup"><img
                         class="popup__close-icon"
-                        src="<%=require('./images/Close-Icon.svg')%>"
-                    alt="Х"></button>
+                        src="./images/Close-Icon.svg"
+                        alt="Х"></button>
                 <h3 class="popup__title">Новое место</h3>
                 <form class="popup__author-edit" id="popupPhotoForm"
                     method="post"
@@ -132,11 +133,49 @@
                     id="close-photo-popup" type="button"
                     name="close-popup"><img
                         class="popup__close-icon"
-                        src="<%=require('./images/Close-Icon.svg')%>"
-                    alt="Х"></button>
+                        src="./images/Close-Icon.svg"
+                        alt="Х"></button>
                 <img class="popup__open-photo"
                     src="#" alt="фото">
                 <h2 class="popup__open-title"></h2>
+            </div>
+        </div>
+        <div class="popup" id="add-avatar">
+            <div class="popup__content">
+                <button class="popup__close" id="close-add-photo" type="button"
+                    name="close-popup"><img
+                        class="popup__close-icon"
+                        src="./images/Close-Icon.svg"
+                        alt="Х"></button>
+                <h3 class="popup__title">Обновить аватар</h3>
+                <form class="popup__author-edit" id="popupAvatarForm"
+                    method="post"
+                    name="addPhoto" novalidate>
+                    <input class="popup__input-style
+                        popup__input-style_edit_work"
+                        id="linkAvatar"
+                        name="avatar"
+                        required
+                        placeholder="Ссылка на аватар"
+                        type="url">
+                    <span class="popup__form-error
+                        popup__form-error_from-avatar" id="linkAvatar-error"></span>
+                    <button type="submit" class="popup__save" id="savePhoto"
+                        name="submit-form">Сохранить</button>
+                </form>
+            </div>
+        </div>
+        <div class="popup" id="deletePhoto">
+            <div class="popup__content">
+                <button class="popup__close" id="close-add-photo" type="button"
+                    name="close-popup"><img
+                        class="popup__close-icon"
+                        src="./images/Close-Icon.svg"
+                        alt="Х"></button>
+                <h3 class="popup__title">Вы уверены?</h3>
+                <form class="popup__author-edit" id="deleteForm">
+                    <button type="submit" class="popup__save">Да</button>
+                </form>
             </div>
         </div>
         <template id="element-template">
@@ -148,10 +187,12 @@
                     id="deletePhoto"></button>
                 <div class="element__text-zone">
                     <h2 class="element__title"></h2>
-                    <button class="element__like" type="button" name="like"></button>
                 </div>
+                <button class="element__like" type="button" name="like"></button>
+                <span class="element__number-likes"></span>
             </article>
         </template>
+        <script type="module" defer src="./scripts/pages/index.js"></script>
     </body>
 
 </html>
