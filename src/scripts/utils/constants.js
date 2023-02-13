@@ -13,4 +13,4 @@ export const popupEditAvatar = document.querySelector('#add-avatar');           
 export const formEditAvatar = document.querySelector('#popupAvatarForm')                         //форма изменения аватара
 export const buttonEditAvatar = document.querySelector('.author__avatar-button');                //кнопка вызова попапа с аватаром  
 export const avatarAuthor = document.querySelector('.author__avatar');                           //аватар на странице 
-export const popupDelete = document.querySelector('#deletePhoto');                               //попап удаления фоток
+export const popupDelete = document.querySelector('#deletePhotoPopup');                               //попап удаления фоток
