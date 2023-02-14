@@ -35,6 +35,7 @@ class Card {
     this._likesSum.textContent = value.likes.length
     this._likeButton.classList.toggle('element__like_active')
   }
+//проверяет стоит ли лайк//////////////////////////////////////////////////////////////////////////////////////////
   _cardLiked() {
     if (!this._likes) { return }
     if (this._likes.some((value) => {

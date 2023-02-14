@@ -25,27 +25,29 @@ const authorInfoSource = new UserInfo({
   work: '.author__work',
   avatar: '.author__avatar',
 });
-Promise.all([api.userInfoFromServer()])
-  .then(([userInfo]) => {
+Promise.all([api.userInfoFromServer(), api.cardsFromServer()])
+  .then(([userInfo, initialCards]) => {
     authorInfoSource.setUserInfo({ nameAuthor: userInfo.name, workAuthor: userInfo.about });
     authorInfoSource.setUserAvatar({ avatarAuthor: userInfo.avatar });
     userId = userInfo._id;
+    cardsFromArray.renderItems(initialCards)
   })
   .catch((err) => {
     console.log(`Ошибка данных: ${err}`);
   });
 //попап изменения аватара автора///////////////////////////////////////////////////////////////
-const editAvatar = new PopupWithForm(popupEditAvatar, 'Сохранение', {
+const editAvatar = new PopupWithForm(popupEditAvatar, 'Сохранить', {
   callbackSubmitForm: (value) => {
     editAvatar.loadInfo(true)
     api.changeAvatar(value)
       .then(() => {
         authorInfoSource.setUserAvatar({ avatarAuthor: value.avatar })
+        editAvatar.close()
       })
       .catch((err) => { console.log(`Ошибка данных : ${err}`) })
-      .finally(() => { setTimeout(1000,
-        editAvatar.loadInfo(false),
-      editAvatar.close())})
+      .finally(() => {
+        editAvatar.loadInfo(false)
+      })
   }
 });
 buttonEditAvatar.addEventListener('click', () => {
@@ -55,13 +57,13 @@ buttonEditAvatar.addEventListener('click', () => {
 editAvatar.setEventListeners();
 //попап текста о авторе//////////////////////////////////////////////////////////////////////////
 authorEditButton.addEventListener('click', () => {
-  profileValidation.resetError();
+  profileValidation.resetValidation();
   const authorInfo = authorInfoSource.getUserInfo();
   inputNameAuthor.value = authorInfo.name;
   inputWorkAuthor.value = authorInfo.work;
   editAuthor.open();
 });
-const editAuthor = new PopupWithForm(popupEditAuthor, 'Сохранение', {
+const editAuthor = new PopupWithForm(popupEditAuthor, 'Сохранить', {
   callbackSubmitForm: (value) => {
     editAuthor.loadInfo(true)
     api.changeUserInfo(value)
@@ -70,11 +72,12 @@ const editAuthor = new PopupWithForm(popupEditAuthor, 'Сохранение', {
           nameAuthor: value.name,
           workAuthor: value.work,
         })
+        editAuthor.close()
       })
       .catch((err) => { console.log(`Ошибка данных : ${err}`) })
-      .finally(() => {setTimeout(1000,
-        editAuthor.loadInfo(false),
-        editAuthor.close())})
+      .finally(() => {
+        editAuthor.loadInfo(false)
+      })
   }
 });
 editAuthor.setEventListeners();//установил в глобальной области
@@ -90,9 +93,8 @@ editAvatarValidation.enableValidation();
 const popupPicture = new PopupWithImage(photoOpen);
 popupPicture.setEventListeners();
 
-
 //добавление фоток из попапа////////////////////////////////////////////////////////////
-const justMakingCard = (item) => {
+const makingCard = (item) => {
   const card = new Card(item, '#element-template', {
     userId: userId,
     putLike: (cardId) => {
@@ -122,6 +124,7 @@ const justMakingCard = (item) => {
             popupDeleteImg.loadInfo(false)
             popupDeleteImg.close()
           })
+          .catch((err) => { console.log(`Ошибка данных : ${err}`) })
       })
     }
   });
@@ -138,12 +141,13 @@ const addCardFromPopup = new PopupWithForm(popupElementAddPhoto, 'Создать
     addCardFromPopup.loadInfo(true)
     api.downloadNewCard(value)
       .then((data) => {
-        cardsFromArray.addItemToTop(justMakingCard(data))})
+        cardsFromArray.addItemToTop(makingCard(data))
+        addCardFromPopup.close()
+      })
       .catch((err) => { console.log(`Ошибка данных : ${err}`) })
       .finally(() => {
-        setTimeout(1000,
-          addCardFromPopup.loadInfo(false),
-        addCardFromPopup.close())})
+        addCardFromPopup.loadInfo(false)
+      })
 
   }
 })
@@ -154,15 +158,6 @@ buttonAddCard.addEventListener('click', () => {
 });
 const cardsFromArray = new Section({
   renderer: (item) => {
-    cardsFromArray.addItem(justMakingCard(item));
+    cardsFromArray.addItem(makingCard(item));
   }
 }, contentZone)
-//добавление фоток из массива cards/////////////////////////////////////////////////////
-Promise.all([api.cardsFromServer()])
-  .then(([initialCards]) => {
-    cardsFromArray.renderItems(initialCards)
-  })
-  .catch((err) => {
-    console.log(`Ошибка данных: ${err}`);
-  });
-//////////////////////////////////////////////////////////////////////////////////////

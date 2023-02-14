@@ -2,13 +2,13 @@
 class FormValidator {
     constructor(config, form) {
         this._form = form;
-        this._inputsForm = [...this._form.querySelectorAll(config.inputSelector)]
+        this._formInputs = [...this._form.querySelectorAll(config.inputSelector)]
         this._button = this._form.querySelector(config.submitButtonSelector);
         this._btnDisColor = config.inactiveButtonClass;
         this._inputErrorColor = config.inputErrorClass;
     }
     editStatusButton() {
-        if (this._inputsForm.every(input => input.validity.valid)) {
+        if (this._formInputs.every(input => input.validity.valid)) {
             this._button.disabled = false;
             this._button.classList.remove(this._btnDisColor);
         } else {
@@ -25,8 +25,8 @@ class FormValidator {
             errorText.textContent = input.validationMessage;
         }
     }
-    resetError() {
-        this._inputsForm.forEach((formInput) => {
+    resetValidation() {
+        this._formInputs.forEach((formInput) => {
             const errorText = this._form.querySelector(`#${formInput.id}-error`);
             errorText.textContent = '';
             formInput.classList.remove(this._inputErrorColor)
@@ -41,7 +41,7 @@ class FormValidator {
         }
     }
     enableValidation() {
-        this._inputsForm.forEach(input => {
+        this._formInputs.forEach(input => {
             input.addEventListener('input', () => {
                 this.editStatusButton();
                 this._editErrorMessage(input);

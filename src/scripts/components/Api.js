@@ -4,7 +4,7 @@ export default class Api {
         this._headers = options.headers;
     };
     //возвращаем результат работы метода json если все ок, иначе возвращаем ошибку
-    serverResponse(res) {
+     _getResponse(res) {
         if (res.ok) {
             return res.json();
         } else {
@@ -17,7 +17,7 @@ export default class Api {
             method: 'GET',
             headers: this._headers,
         })
-            .then(res => this.serverResponse(res))
+            .then(res => this._getResponse(res))
     };
     //аватар пользователя с сервера//////////////////////////
 
@@ -27,7 +27,7 @@ export default class Api {
             method: 'GET',
             headers: this._headers,
         })
-            .then(res => this.serverResponse(res));
+            .then(res => this._getResponse(res));
     };
     //изменение текста о себе/////////////////////////////////
     changeUserInfo(value) {
@@ -39,7 +39,7 @@ export default class Api {
                 about: value.work
             })
         })
-            .then(res => this.serverResponse(res));
+            .then(res => this._getResponse(res));
     };
     //загрузка новой карточки///////////////////////////////////
     downloadNewCard(value) {
@@ -51,7 +51,7 @@ export default class Api {
                 link: value.link
             })
         })
-            .then(res => this.serverResponse(res));
+            .then(res => this._getResponse(res));
     };
     //редактирование аватара///////////////////////////////////////
     changeAvatar(value) {
@@ -62,7 +62,7 @@ export default class Api {
                 avatar: value.avatar
             })
         })
-            .then(res => this.serverResponse(res));
+            .then(res => this._getResponse(res));
     };
     //ставим лайк/////////////////////////////////////
     putLikeEl(cardId) {
@@ -70,7 +70,7 @@ export default class Api {
             method: 'PUT',
             headers: this._headers
         })
-            .then(res => this.serverResponse(res));
+            .then(res => this._getResponse(res));
     };
     //удаляем лайк/////////////////////////////////////////////
     deleteLikeEL(cardId) {
@@ -78,7 +78,7 @@ export default class Api {
             method: 'DELETE',
             headers: this._headers
         })
-            .then(res => this.serverResponse(res));
+            .then(res => this._getResponse(res));
     };
     //удаляем карточку////////////////////////////////////////////////
     deleteCard(cardId) {
@@ -86,6 +86,6 @@ export default class Api {
             method: 'DELETE',
             headers: this._headers
         })
-            .then(res => this.serverResponse(res));
+            .then(res => this._getResponse(res));
     };
 }

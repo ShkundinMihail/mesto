@@ -5,7 +5,7 @@ export default class PopupWithForm extends Popup {
         super(popup);
         this._callbackSubmitForm = callbackSubmitForm;
         this._formPopup = this._popup.querySelector('.popup__author-edit');
-        this._inputsForm = [...this._formPopup.querySelectorAll('.popup__input-style')];
+        this._formInputs = [...this._formPopup.querySelectorAll('.popup__input-style')];
         this._buttonSubmit = this._popup.querySelector('.popup__save');
         this._textBtn = textBtn;
     }
@@ -15,7 +15,7 @@ export default class PopupWithForm extends Popup {
     }
     _getInputValues() {
         this._dataFormFields = {};
-        this._inputsForm.forEach(object=>{
+        this._formInputs.forEach(object=>{
             this._dataFormFields[object.name] = object.value;
         })
         return this._dataFormFields
